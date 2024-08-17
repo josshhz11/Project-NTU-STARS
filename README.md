@@ -3,9 +3,6 @@
 
 ![image](https://www.ntu.edu.sg/images/default-source/from-figma/ntu-placeholder-d.jpg?sfvrsn=d4050a9e_2)
 
-
-Using Jupyter Notebook and Python 3.7
-
 ## Problem Statement
 To help NTU students arrange their modules and classes efficiently with NTU STARS.
 
