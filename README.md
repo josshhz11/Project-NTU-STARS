@@ -82,5 +82,8 @@ This program is only able to run during the add-drop period each day from 10:30a
 ### 3. Program does not check the course code
 This will affect the results of the index slots if there are two modules you have registered with the same index, although unlikely. This is because the program only checks for the unique index, and not the course code.
 
+### 4. Program can only be run locally on your computer
+This program can only be run from your laptop locally, from the terminal, which might take up computing resources and make your laptop slow. However, the alternative which is running this program on an online server without your laptop's computing resources will cost money.
+
 ## Disclosures
 This program does not in any way, shape or form, store your user data such as username and password.
