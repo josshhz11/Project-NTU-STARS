@@ -12,7 +12,7 @@ This program seeks to provide a solution to this problem by automating the proce
 
 ## How does this program work?
 
-This program works by using the Telegram API to periodically send out the number of class vacancies for the chosen module index to a Telegram channel using a Telegram bot. The retrieval of this class vacancies is done by automating the login to NTU STARS website, and selecting the module and the 'Change Index' option, which will lead us to the "Swap Index" page where we can find the class index that we want and their respective vacancies.
+This program works by using the Telegram API to periodically send out the number of class vacancies for the chosen module index to a Telegram channel using a Telegram bot. The retrieval of this class vacancies is done by automating the login to NTU STARS website, and selecting the module and the 'Change Index' option, which will lead us to the 'Swap Index' page where we can find the class index that we want and their respective vacancies.
 
 This script requires the installation of numerous applications as well as python libraries.
 
@@ -31,7 +31,7 @@ Afterwards, you should be good to go!
 ## How can we use this program?
 
 ### 1. Creating Telegram Bot
-First, we will need to set up a Telegram bot that will be in charge of sending the automated messages to your Telegram channel. This can be done by searching up the "BotFather" bot on Telegram, and setting up your bot through the following commands: **"/start", "/newbot", "{bot name}", "{bot username}"**, as per the documentation below:
+First, we will need to set up a Telegram bot that will be in charge of sending the automated messages to your Telegram channel. This can be done by searching up the 'BotFather' bot on Telegram, and setting up your bot through the following commands: **"/start", "/newbot", "{bot name}", "{bot username}"**, as per the documentation below:
 
 ![Bot Father](botfather.png) ![Bot Father Chat](botfatherchat.png)
 
@@ -43,7 +43,7 @@ Once we have done that, we need to create a Telegram Channel for yourself, and a
 
 ![Telegram Channel](telegramchannel.png)
 
-We will then need to copy the **channel ID**, which will be the unique ID of the channel, i.e. what's behind "t.me/" in the channel link. In my case, my channel ID is "projectntustars".
+We will then need to copy the **channel ID**, which will be the unique ID of the channel, i.e. what's behind "t.me/" in the channel link. In my case, my channel ID is 'projectntustars'. We will need to add an '@' in front of this when initializing the channel ID, i.e. '@projectntustars'
 
 ### 3. Setting up the python script
 
@@ -71,7 +71,7 @@ You will need to key in these details above every time you run the script (i.e. 
 ### 1. Not automating the changing of slots, but just periodically notifying you of the vacant slots for your desired class index
 This program only seeks to inform you of vacant slots in your desired module index, and does not help you to actually make the changes. A reason why I did not implement this next step is because changing your module index is a very sensitive action, where we do not want any potential errors and change the wrong index, which will not be reversible if there are no empty slots in the original index.
 
-Do let me know if you would like me to improve the program as above which will help to automate the process entirely. You can let me know on Telegram @uneasymoneysniper.
+Do let me know if you would like me to improve the program as above which will help to automate the process entirely. You can let me know on Telegram [@uneasymoneysniper](t.me/uneasymoneysniper).
 
 ### 2. Program is only functional from 10:30am to 10:00pm every day, for when the add-drop period is open each day
 This program is only able to run during the add-drop period each day from 10:30am to 10:00pm, when the site allows you to check for slots and make the add-drop adjustments to your classes.
