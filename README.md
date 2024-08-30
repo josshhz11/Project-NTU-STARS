@@ -1,4 +1,3 @@
-![image](https://github.com/user-attachments/assets/600afdf9-6d31-4755-9c14-2d3c0bfc24c8)
 # Project NTU STARS
 
 ![image](https://www.ntu.edu.sg/images/default-source/from-figma/ntu-placeholder-d.jpg?sfvrsn=d4050a9e_2)
