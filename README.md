@@ -1,4 +1,4 @@
-
+![image](https://github.com/user-attachments/assets/600afdf9-6d31-4755-9c14-2d3c0bfc24c8)
 # Project NTU STARS
 
 ![image](https://www.ntu.edu.sg/images/default-source/from-figma/ntu-placeholder-d.jpg?sfvrsn=d4050a9e_2)
@@ -62,6 +62,15 @@ What we need to do is to edit the script with the relevant information:
 Now it's time to run the script! Upon running the script each time, you will be prompted with your login details (username, password), and the indexes you wish to check and swap (old index, new index). You will not need to input your course code for the module you wish to swap, unless there are two modules with the same indexes, which is where this code will not work.
 
 You will need to key in these details above every time you run the script (i.e. 5 minutes), but not every time the scraping of information occurs. This means that if you run the script on your terminal, it will scrape the information on NTU STARS website every 5 minutes, and you only need to key in the details at the start. You will only need to re-key in your details if you terminate the program and re-run it again.
+
+You can run the script using the following command: 
+
+`python projectntustars.py`
+
+And you will see the following information on your indexes to input:
+
+![Program Execution](programexecution.png)
+
 
 ### Final Result!
 ![Final Result](final-result.png)
