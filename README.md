@@ -42,15 +42,20 @@ Once we have done that, we need to create a Telegram Channel for yourself, and a
 
 We will then need to copy the **channel ID**, which will be the unique ID of the channel, i.e. what's behind "t.me/" in the channel link. In my case, my channel ID is 'projectntustars'. We will need to add an '@' in front of this when initializing the channel ID, i.e. '@projectntustars'
 
-### 3. Setting up the python script
+### 3. Ensure Python is installed on your device
+
+### 4. Setting up the Python script
 
 Now that we have set up the Telegram bot and channel, we should now set up the python script which the program will run on.
 
-What we need to do is to edit the script with the relevant information:
-1. Chrome Driver path (copy the path of the chromedriver.exe application)
-2. Bot Token (with the Telegram bot token of your bot we have saved earlier)
+**What we need to do is to edit the script with the relevant information:**
+**1. Chrome Driver path (copy the path of the chromedriver.exe application, where it is installed). Find an example below:**
+
+`PATH = 'C:/Users/joshua/Downloads/chromedriver-win64/chromedriver.exe'`
+
+**2. Bot Token (with the Telegram bot token of your bot we have saved earlier)
 3. Chat ID (with the Telegram Chat ID we have saved earlier)
-4. Frequency of checking slots (default is 5 minutes, see below for where to change this code)
+4. Frequency of checking slots (default is 5 minutes, see below for where to change this code)**
 
 ![Where to change frequency](frequencyofchecking.png)
 
