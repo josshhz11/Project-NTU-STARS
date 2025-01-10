@@ -25,6 +25,10 @@ Before this can be done, we need to install a few Python libraries required for 
 
 This should be done for the following python libraries: **selenium** and **telegram**.
 
+Alternatively, you can just run this command-line to download all the libraries above that's required:
+
+`pip install -r requirements.txt`
+
 Afterwards, you should be good to go!
 
 ## How can we use this program?
