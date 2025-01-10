@@ -2,3 +2,4 @@ selenium
 telegram
 bs4
 requests
+python-telegram-bot
