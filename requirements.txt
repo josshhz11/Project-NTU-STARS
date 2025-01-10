@@ -1,2 +1,4 @@
 selenium
 telegram
+bs4
+requests
