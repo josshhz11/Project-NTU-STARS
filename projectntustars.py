@@ -39,7 +39,7 @@ async def ntustars():
         try:
             # Scrape every 5 min
             caption = ""
-            PATH = 'C:/Users/joshua/Downloads/chromedriver-win64/chromedriver.exe' # Change this to the path where the chrome driver you have installed is at, in this format 
+            PATH = 'INPUT_YOUR_CHROME_DRIVER_PATH_HERE' # Change this to the path where the chrome driver you have installed is at, format as per README 
             
             service = Service(PATH)
             options = Options()
