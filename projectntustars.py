@@ -26,14 +26,19 @@ To input these login information and course indexes you wish to swap
 
 username = input("Username: ")
 password = getpass.getpass("Password: ")
-index_to_swap = input("Old Index to Swap out of: ") # FILL THIS IN WITH YOUR OWN INDEX YOU WANT TO SWAP (DON'T NEED TO TYPE IN COURSE CODE) i.e. 01166
-new_index_value = input("New Index to Swap to: ") # FILL THIS IN WITH THE NEW INDEX YOU WANT TO SWAP TO i.e. 01172
+number_of_modules = int(input("Number of Modules to swap: "))
+swap_pairs = []  # List to store (old_index, new_index)
 
+for i in range(number_of_modules):
+    old_index = input(f"Old Index to Swap out of for Module {i + 1}: ")
+    new_index = input(f"New Index to Swap to for Module {i + 1}: ")
+    swap_pairs.append((old_index, new_index))
 
 async def ntustars():
     while True:
         try:
-            # Scrape every 1 min
+            # Scrape every 5 min
+            caption = ""
             PATH = 'C:/Users/joshua/Downloads/chromedriver-win64/chromedriver.exe' # Change this to the path where the chrome driver you have installed is at, in this format 
             
             service = Service(PATH)
@@ -76,61 +81,64 @@ async def ntustars():
             ok_button = driver.find_element(By.XPATH, "//input[@value='OK']")
             ok_button.click()
 
-            """
-            Main page with modules
-            """
+            for index_to_swap, new_index_value in swap_pairs:
+                """
+                Main page with modules
+                """
 
-           # Wait for the table element to be present on the main page
-            WebDriverWait(driver, 10).until(
-                EC.presence_of_element_located((By.XPATH, "//table[@bordercolor='#E0E0E0']"))
-            )
+                # Wait for the table element to be present on the main page
+                WebDriverWait(driver, 10).until(
+                    EC.presence_of_element_located((By.XPATH, "//table[@bordercolor='#E0E0E0']"))
+                )
 
-            # Locate the radio button by its value attribute
-            radio_button = driver.find_element(By.XPATH, f"//input[@type='radio' and @value='{index_to_swap}']")
+                # Locate the radio button by its value attribute
+                radio_button = driver.find_element(By.XPATH, f"//input[@type='radio' and @value='{index_to_swap}']")
 
-            # Click the radio button
-            radio_button.click()
+                # Click the radio button
+                radio_button.click()
 
-            # Select the "Change Index" option from the dropdown
-            dropdown = Select(driver.find_element(By.NAME, "opt"))
-            dropdown.select_by_value("C")
+                # Select the "Change Index" option from the dropdown
+                dropdown = Select(driver.find_element(By.NAME, "opt"))
+                dropdown.select_by_value("C")
 
-            # Click the 'Go' button
-            go_button = driver.find_element(By.XPATH, "//input[@type='submit' and @value='Go']")
-            go_button.click()
+                # Click the 'Go' button
+                go_button = driver.find_element(By.XPATH, "//input[@type='submit' and @value='Go']")
+                go_button.click()
 
-            """
-            Swap index page after choosing the mod and index you want to swap
-            """
+                """
+                Swap index page after choosing the mod and index you want to swap
+                """
 
-            # Wait for the form element to be present on the swap index page
-            WebDriverWait(driver, 10).until(
-                EC.presence_of_element_located((By.NAME, "AUS_STARS_MENU"))
-            )
+                # Wait for the form element to be present on the swap index page
+                WebDriverWait(driver, 10).until(
+                    EC.presence_of_element_located((By.NAME, "AUS_STARS_MENU"))
+                )
 
-            # Select the "Change Index" option from the dropdown
-            dropdown_element = driver.find_element(By.NAME, "new_index_nmbr")
-            options = dropdown_element.find_elements(By.XPATH, f".//option[@value='{new_index_value}']")
+                # Select the "Change Index" option from the dropdown
+                dropdown_element = driver.find_element(By.NAME, "new_index_nmbr")
+                options = dropdown_element.find_elements(By.XPATH, f".//option[@value='{new_index_value}']")
 
-            # Check if the element exists
-            if options:
-                option = options[0]
-                option_text = option.text  # This should give you "01172 / 9 / 1"
-                print(option_text)
+                # Check if the element exists
+                if options:
+                    option = options[0]
+                    option_text = option.text  # This should give you "01172 / 9 / 1"
+                    print(option_text)
 
-                # Parse out the middle number (vacancies)
-                vacancies = int(option_text.split(" / ")[1])
-                print(f"The number of vacancies for index {new_index_value} is {vacancies}.")
-            else:
-                print("The option was not found.")
-            
-            driver.quit()
+                    # Parse out the middle number (vacancies)
+                    vacancies = int(option_text.split(" / ")[1])
+                    print(f"The number of vacancies for index {new_index_value} is {vacancies}.")
+                else:
+                    print("The option was not found.")
 
-            # Write the Telegram message to broadcast to the channel
-            if (vacancies > 0):
-                caption = f"{vacancies} available slots for index {new_index_value}"
-            elif (vacancies == 0):
-                caption = f"No vacancies for index {new_index_value}"
+                # Write the Telegram message to broadcast to the channel
+                if (vacancies > 0):
+                    caption += f"{vacancies} available slots for index {new_index_value}\n"
+                elif (vacancies == 0):
+                    caption += f"No vacancies for index {new_index_value}\n"
+                
+                # Click the 'Back To Timetable' button
+                back_button = driver.find_element(By.XPATH, "//input[@type='submit' and @value='Back to Timetable']")
+                back_button.click()
 
             await bot.send_message(chat_id=chat_id, text=caption)
             # Sleep for 5 minutes
@@ -138,6 +146,7 @@ async def ntustars():
             function sleeps for 5 minutes after each scrape using asyncio.sleep(300)
             (300 seconds = 5 minutes).
             '''
+            driver.quit()    
             await asyncio.sleep(300)
         # Throw an error if the problem is network connection or url timedout 
         except (requests.exceptions.Timeout, requests.exceptions.ConnectionError) as e:
