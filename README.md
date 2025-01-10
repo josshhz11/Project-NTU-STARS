@@ -19,13 +19,7 @@ Firstly, a [chrome driver](https://googlechromelabs.github.io/chrome-for-testing
 
 What this chrome driver does is that it simulates an actual user opening Chrome, logging in to the school website, and retrieving the information. Every time the code is run, this chrome driver will open up a new browser to login into the school's website, and retrieve the relevant information (the number of vacancies for your module), and broadcast it to your Telegram channel, using a Telegram Bot. 
 
-Before this can be done, we need to install a few Python libraries required for the running of this Python program. THey can be downloaded by running the command-line arguments in the terminal:
-
-`pip install [library name]`
-
-This should be done for the following python libraries: **selenium** and **telegram**.
-
-Alternatively, you can just run this command-line to download all the libraries above that's required:
+Before this can be done, we need to install a few Python libraries required for the running of this Python program. The list of libraries are compiled under **requirements.txt** and can be downloaded by running the command-line argument in the terminal:
 
 `pip install -r requirements.txt`
 
@@ -48,21 +42,28 @@ Once we have done that, we need to create a Telegram Channel for yourself, and a
 
 We will then need to copy the **channel ID**, which will be the unique ID of the channel, i.e. what's behind "t.me/" in the channel link. In my case, my channel ID is 'projectntustars'. We will need to add an '@' in front of this when initializing the channel ID, i.e. '@projectntustars'
 
-### 3. Setting up the python script
+### 3. Ensure Python is installed on your device
+
+### 4. Setting up the Python script
 
 Now that we have set up the Telegram bot and channel, we should now set up the python script which the program will run on.
 
-What we need to do is to edit the script with the relevant information:
-1. Chrome Driver path (copy the path of the chromedriver.exe application)
-2. Bot Token (with the Telegram bot token of your bot we have saved earlier)
+**What we need to do is to edit the script with the relevant information:**
+**1. Chrome Driver path (copy the path of the chromedriver.exe application, where it is installed). Find an example below:**
+
+`PATH = 'C:/Users/joshua/Downloads/chromedriver-win64/chromedriver.exe'`
+
+**2. Bot Token (with the Telegram bot token of your bot we have saved earlier)
 3. Chat ID (with the Telegram Chat ID we have saved earlier)
-4. Frequency of checking slots (default is 5 minutes, see below for where to change this code)
+4. Frequency of checking slots (default is 5 minutes, see below for where to change this code)**
 
 ![Where to change frequency](frequencyofchecking.png)
 
 ### 4. And voila! time to run the script!
 
-Now it's time to run the script! Upon running the script each time, you will be prompted with your login details (username, password), and the indexes you wish to check and swap (old index, new index). You will not need to input your course code for the module you wish to swap, unless there are two modules with the same indexes, which is where this code will not work.
+Now it's time to run the script! Upon running the script each time, you will be prompted with your login details (username, password), and the number of modules you want to swap. Then, you will be prompted to input the indexes you wish to check and swap (old index, new index). You will not need to input your course code for the module you wish to swap, unless there are two modules with the same indexes, which is where this code will not work.
+
+If you are looking to check multiple desired indexes to swap to for a particular module, I have not yet implemented this function, and you will have to input multiple old index, new index entries with repeated modules if so.
 
 You will need to key in these details above every time you run the script (i.e. 5 minutes), but not every time the scraping of information occurs. This means that if you run the script on your terminal, it will scrape the information on NTU STARS website every 5 minutes, and you only need to key in the details at the start. You will only need to re-key in your details if you terminate the program and re-run it again.
 
